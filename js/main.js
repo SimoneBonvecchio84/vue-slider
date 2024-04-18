@@ -5,6 +5,7 @@ createApp({
   data() {
     return {
       activeIndex: 0,
+      nextInterval: null,
       images :[
         {
           image: "img/01.webp",
@@ -48,6 +49,19 @@ createApp({
         this.activeIndex--;
       } else if(this.activeIndex = -1){
         this.activeIndex = this.images.length -1;
+      }
+    },
+
+    autoNext: function () {
+      if(!this.nextInterval) {
+        this.nextInterval = setInterval(() => {
+          if(this.activeIndex === this.images.length -1) {
+            this.activeIndex = 0;
+          } else {
+            this.activeIndex++;
+          }   
+        }, 2000);
+       
       }
     }
 
