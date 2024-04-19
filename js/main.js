@@ -6,6 +6,7 @@ createApp({
     return {
       activeIndex: 0,
       nextInterval: null,
+      invertInterval: null,
       images :[
         {
           image: "img/01.webp",
@@ -36,14 +37,17 @@ createApp({
     }
   },
   methods: {
+    //Funzione che scorre in avanti le immagini del carosello
     showNext: function () {
       if(this.activeIndex === this.images.length -1){
         this.activeIndex = 0;
+        
       } else {
         this.activeIndex++;
       }      
     },
-
+    
+    //Funzione che scorre all'indietro le immagini del carosello
     showPrev: function () {
       if(this.activeIndex > 0) {
         this.activeIndex--;
@@ -51,21 +55,35 @@ createApp({
         this.activeIndex = this.images.length -1;
       }
     },
-
+    
+    //Funzione che sorre in avanti automaticamente le immagini del carosello
     autoNext: function () {
       if(!this.nextInterval) {
         this.nextInterval = setInterval(() => {
           if(this.activeIndex === this.images.length -1) {
-            this.activeIndex = 0;
+            this.activeIndex = 0;  
           } else {
             this.activeIndex++;
+            
+          }   
+        }, 2000); 
+      }
+    },
+
+    //Funzione che scorre in dietro automaticamente le immagini del carosello
+    autoInverse: function () {
+      if(!this.invertInterval) {
+        this.invertInterval = setInterval(() => {        
+          if(this.activeIndex > 0){
+            this.activeIndex --;
+            console.log(this.activeIndex)
+          } else if(this.activeIndex = 0) {
+            this.activeIndex === this.images.length ;
+            console.log(this.activeIndex)
           }   
         }, 2000);
-       
       }
     }
-
-    
   }
 
 }).mount("#app")
