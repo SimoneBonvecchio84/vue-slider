@@ -5,7 +5,6 @@ createApp({
   data() {
     return {
       activeIndex: 0,     
-      curThumbIndex: 0,
       nextInterval: null,
       invertInterval: null,
       images :[
