@@ -57,9 +57,10 @@
                   <span class="my-next-hook"></span>
                 </div>
                 <!-- immagini interne -->
-                <img  
-                  v-for="curImage, i in images" 
-                  class="img-fluid my-thumbnail"                   
+                <img                 
+                  v-for="(curImage, i) in images"                  
+                  class="img-fluid my-thumbnail"
+                  :class="{'active': curThumbIndex === i}"                                     
                   :src="images[i].image"
                   alt="images[i].text" />
                 <!-- immagini interne -->

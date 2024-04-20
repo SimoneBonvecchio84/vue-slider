@@ -4,7 +4,8 @@ const { createApp } = Vue
 createApp({
   data() {
     return {
-      activeIndex: 0,
+      activeIndex: 0,     
+      curThumbIndex: 0,
       nextInterval: null,
       invertInterval: null,
       images :[
@@ -39,36 +40,45 @@ createApp({
   methods: {
     //Funzione che scorre in avanti le immagini del carosello
     showNext: function () {
-      if(this.activeIndex === this.images.length -1){
+      if(this.activeIndex === this.images.length -1 && this.curThumbIndex === this.images.length-1){
         this.activeIndex = 0;
-        
+        this.curThumbIndex =0;
       } else {
         this.activeIndex++;
+        this.curThumbIndex++;
       }      
     },
     
     //Funzione che scorre all'indietro le immagini del carosello
     showPrev: function () {
-      if(this.activeIndex > 0) {
+      if(this.activeIndex > 0 && this.curThumbIndex > 0) {
         this.activeIndex--;
-      } else if(this.activeIndex = -1){
+        this.curThumbIndex--;
+      } else if(this.activeIndex = -1 ){
         this.activeIndex = this.images.length -1;
+        this.curThumbIndex = this.images.length -1;
       }
     },
     
+   
+  
     //Funzione che sorre in avanti automaticamente le immagini del carosello
     autoNext: function () {
       if(!this.nextInterval) {
         this.nextInterval = setInterval(() => {
           if(this.activeIndex === this.images.length -1) {
-            this.activeIndex = 0;  
+            this.activeIndex = 0; 
+             
           } else {
+            this.activeClass ="active";
             this.activeIndex++;
             this.invertInterval = null;
           }   
         }, 2000); 
       }
     },
+
+
 
     //Funzione che scorre in dietro automaticamente le immagini del carosello
     autoInverse: function () {
