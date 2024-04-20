@@ -40,23 +40,21 @@ createApp({
   methods: {
     //Funzione che scorre in avanti le immagini del carosello
     showNext: function () {
-      if(this.activeIndex === this.images.length -1 && this.curThumbIndex === this.images.length-1){
+      if(this.activeIndex === this.images.length -1 ){
         this.activeIndex = 0;
-        this.curThumbIndex =0;
+        this.curThumbIndex = 0;
       } else {
         this.activeIndex++;
-        this.curThumbIndex++;
       }      
     },
     
     //Funzione che scorre all'indietro le immagini del carosello
     showPrev: function () {
-      if(this.activeIndex > 0 && this.curThumbIndex > 0) {
+      if(this.activeIndex > 0 ) {
         this.activeIndex--;
-        this.curThumbIndex--;
       } else if(this.activeIndex = -1 ){
         this.activeIndex = this.images.length -1;
-        this.curThumbIndex = this.images.length -1;
+       
       }
     },
     
