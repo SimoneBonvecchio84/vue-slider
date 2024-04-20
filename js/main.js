@@ -64,7 +64,7 @@ createApp({
             this.activeIndex = 0;  
           } else {
             this.activeIndex++;
-            
+            this.invertInterval = null;
           }   
         }, 2000); 
       }
@@ -78,7 +78,7 @@ createApp({
             this.activeIndex --;
             console.log(this.activeIndex)
           } else if(this.activeIndex = 0) {
-            this.activeIndex === this.images.length ;
+            this.activeIndex === this.images.length             
             console.log(this.activeIndex)
           }   
         }, 2000);
